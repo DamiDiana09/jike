@@ -1,0 +1,42 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://www.lifewire.com/thmb/em7qjv0WL_bnQFRvVfH2ZpSX0aQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1347342816-0b7e4d091f2d4c26819520475904b9f1.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Log In</h1>
+            <span class="subheading">Welcome Back!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8 col-md-10 mx-auto content">
+           <p style="color: red"><i>
+        {% with messages = get_flashed_messages() %}
+         {% for message in messages %}
+            {{ message }}
+         {% endfor %}
+        {% endwith %}
+             </i>
+        </p>
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+
+      </div>
+    </div>
+  </div>
+
+
+{% include "footer.html" %}
+{% endblock %}
